@@ -23,7 +23,17 @@ public class HotelsHomePage extends BasePage {
     private By checkinField = By.cssSelector("#qf-0q-localised-check-in");
     private By checkoutField = By.cssSelector("#qf-0q-localised-check-out");
     private By numberNights = By.xpath("//*[@id=\"qf-0q-nights\"]/span[1]/span");
+    private By textSeen = By.xpath("//*[@id=\"main-content\"]/main/div[2]/div/div[1]/div/div[1]/div[1]" +
+            "/div/div/form/div[1]/div/div/span");
+    private By invalidText = By.xpath("//*[@id=\"widget-overlay-title-1\"]");
+    private By linkText = By.cssSelector("#hdr-customer-bookings");
     private By selectChoices = By.cssSelector("#qf-0q-compact-occupancy");
+    private By selectGroupChoice = By.cssSelector("#qf-0q-rooms");
+    private By selectDetailPage = By.cssSelector("#q-rooms");
+    private By searchButton = By.cssSelector("#change-search-form > div > form >" +
+            " div.widget-query-group.widget-query-ft > button");
+    private By filterDetail = By.cssSelector("#f-popular-2048");
+    private By choiceFilterText = By.cssSelector("#applied-filters > div > ul > li");
     private By editButton = By.xpath("//button[@type='button'][contains(text(),'Edit or add rooms')]");
     private By selectAdults = By.xpath("//*[@id=\"qf-0q-room-0-adults\"]");
     private By selectChild = By.xpath("//*[@id=\"qf-0q-room-0-children\"]");
@@ -92,7 +102,40 @@ public class HotelsHomePage extends BasePage {
         choiceMenu.selectByIndex(2);
     }
 
-
+    public void selectGroup() {
+        Select groupChoice = new Select(SharedSD.getDriver().findElement(selectGroupChoice));
+        groupChoice.selectByIndex(8);
+    }
+    public void detailPage() {
+        Select detailChoice = new Select(SharedSD.getDriver().findElement(selectDetailPage));
+        detailChoice.selectByVisibleText("2");
+      //  SharedSD.getDriver().findElement(searchButton).click();
+    }
+    public void detailPageFilter() {
+        Select detailChoice = new Select(SharedSD.getDriver().findElement(selectDetailPage));
+        detailChoice.selectByVisibleText("2");
+        SharedSD.getDriver().findElement(filterDetail).click();
+    }
+    public void clickText() {
+        SharedSD.getDriver().findElement(linkText).click();
+    }
+    public void bookingPage() {
+        String expectedText = "Hotels.com - Deals & Discounts for Hotel Reservations from Luxury Hotels" +
+                " to Budget Accommodations";
+        String actualText = SharedSD.getDriver().getTitle();
+        Assert.assertEquals(actualText,expectedText);
+    }
+    public void verifyDetails() {
+        String expectedResults = "Amenities: Free Breakfast";
+        WebElement element = SharedSD.getDriver().findElement(choiceFilterText);
+        String actualResults = element.getText();
+        Assert.assertEquals(actualResults,expectedResults);
+    }
+    public void verifyGroup() {
+        String expectedTitle = "Group Hotel Quote Request";
+        String actualTitle = SharedSD.getDriver().getTitle();
+        Assert.assertEquals(actualTitle,expectedTitle);
+    }
     public void selectMenu1() {
         Select adultsMenu = new Select(SharedSD.getDriver().findElement(selectAdults));
         adultsMenu.selectByVisibleText("2");
@@ -151,6 +194,22 @@ public class HotelsHomePage extends BasePage {
                 } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+    }
+    public void enterInvalidText() {
+        SharedSD.getDriver().findElement(whereBox).sendKeys("!!!!!");
+    }
+    public void verifyText() {
+        String expectedText = "Please tell us the destination, hotel or landmark you’re looking for";
+        WebElement element = SharedSD.getDriver().findElement(textSeen);
+        String actualText = element.getText();
+        Assert.assertEquals(expectedText,actualText);
+    }
+    public void verifyInvalidText() {
+        String expectedText = "Sorry, we could not understand !!!!!";
+        WebElement element = SharedSD.getDriver().findElement(invalidText);
+        String actualText = element.getText();
+        Assert.assertEquals(expectedText,actualText);
     }
 
 

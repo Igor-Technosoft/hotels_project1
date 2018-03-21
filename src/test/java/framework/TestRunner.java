@@ -20,7 +20,12 @@ import org.junit.runner.RunWith;
        // tags = {"@skyhomepage"},
        // tags = {"@verifytemps"},
        //   tags = {"@skytimemachine"},
-        tags = {"@hotels-destination"},
+       // tags = {"@hotels-destination"},
+         // tags = {"@hotels-no-destination"},
+        //tags = {"@hotels-invalid-destination"},
+       // tags = {"@hotels-group-page"},
+        //tags = {"@hotels-update-detail"},
+        tags = {"@hotels-booking-page"},
         //tags = {"@signup"},
         //tags = {"@login-1"},
 

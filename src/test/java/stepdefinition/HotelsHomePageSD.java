@@ -46,6 +46,8 @@ public class HotelsHomePageSD {
     public void verifyNights() {
         hotelsHomePage.verifyNights();
     }
+
+
     @When("^I click on rooms drop-down$")
     public void clickEditChoice() {
         hotelsHomePage.clickEditButton();
