@@ -16,6 +16,7 @@ import java.util.Calendar;
  * Created by igorsandler on 2/16/18.
  */
 public class HotelsHomePage extends BasePage {
+    // Locators
     //public String checkDate;
     // public By checkDate = By.xpath("//*[@id=\"qf-0q-localised-check-in\"]");
    // private By checkinField = By.xpath("//*[@id=\"qf-0q-localised-check-in\"]");
@@ -49,7 +50,7 @@ public class HotelsHomePage extends BasePage {
             "form/div[5]/button");
 
 
-
+//Commonly used methods
     public void setCurrentDate() {
       //  try {
 
