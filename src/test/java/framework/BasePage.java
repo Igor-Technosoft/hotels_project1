@@ -12,9 +12,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
-/**
- * Created by mohammadmuntakim on 6/9/17.
- */
+
 public class BasePage {
 
 	private static WebElement webAction(final By locator) {
