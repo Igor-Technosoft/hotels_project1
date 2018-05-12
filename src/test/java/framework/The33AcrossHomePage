@@ -1,0 +1,42 @@
+package framework;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotSelectableException;
+import stepdefinition.SharedSD;
+
+/**
+ * Created by igorsandler on 5/11/18.
+ */
+public class The33AcrossHomePage extends BasePage {
+    // Locators
+    private By adDisplayed = By.className("tynt-sidebar-content");
+    private By closeButton = By.className("tynt-close-btn");
+
+    //This method verifies that the ad is displayed and click on Close button
+    public void isTheAdDisplayed() {
+        try {
+
+            if (SharedSD.getDriver().findElement(adDisplayed).isDisplayed()) {
+                clickOn(closeButton);
+            } else {
+                System.out.println("Ad didn't properly load");
+            }
+        } catch (ElementNotSelectableException e) {
+            e.printStackTrace();
+        }
+
+    }
+    //Verifies that after the ad was closed it was no longer displayed
+    public void verifyAdClosed() {
+        try {
+            if (!SharedSD.getDriver().findElement(adDisplayed).isDisplayed()) {
+                System.out.println("Ad closed successfully");
+            } else {
+                System.out.println("There was an issue using close Ad button ");
+            }
+        } catch (ElementNotSelectableException e) {
+            e.printStackTrace();
+        }
+    }
+   
+}
