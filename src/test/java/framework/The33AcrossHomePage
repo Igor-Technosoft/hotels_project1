@@ -29,14 +29,14 @@ public class The33AcrossHomePage extends BasePage {
     //Verifies that after the ad was closed it was no longer displayed
     public void verifyAdClosed() {
         try {
-            if (!SharedSD.getDriver().findElement(adDisplayed).isDisplayed()) {
-                System.out.println("Ad closed successfully");
-            } else {
-                System.out.println("There was an issue using close Ad button ");
-            }
+           if (SharedSD.getDriver().getPageSource().contains("Flexible Revenue Opportunities for Unique Publishers")) {
+               
+                System.out.println("Ad didn't close successfully");
+           }
+
         } catch (ElementNotSelectableException e) {
             e.printStackTrace();
         }
     }
-   
+
 }
