@@ -14,21 +14,9 @@ import org.junit.runner.RunWith;
         //Path to your feature file
         features = {"src/test/resources/features"},
         // Specify tags to be executed
-     // tags = {"@typeahead1"},
-       //tags = {"@hotels-login"},
-       //tags = {"@amazon-login"},
-       // tags = {"@skyhomepage"},
-       // tags = {"@verifytemps"},
-       //   tags = {"@skytimemachine"},
-       // tags = {"@hotels-destination"},
-         // tags = {"@hotels-no-destination"},
-        //tags = {"@hotels-invalid-destination"},
-       // tags = {"@hotels-group-page"},
-        //tags = {"@hotels-update-detail"},
+    
         tags = {"@hotels-booking-page"},
-        //tags = {"@signup"},
-        //tags = {"@login-1"},
-
+        
         //Specify step definition package name (Note: make sure to have this package on current directory) 
         glue = {"stepdefinition"}
 )
