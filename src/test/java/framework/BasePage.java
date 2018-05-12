@@ -82,20 +82,3 @@ public class BasePage {
 		SharedSD.getDriver().navigate().refresh();
 	}
 }
-//	public void testAutoComplete() {
-//		try {
-//
-//			// DriverWrapper.getDriver().findElement(By.xpath("//*[@id=\"flight-origin-hp-flight\"]")).sendKeys
-//			// ("Paris");
-//			SharedSD.getDriver().findElement(flyingFromTextBox).sendKeys("Paris");
-//			Thread.sleep(3000);
-//			List<WebElement> list = SharedSD.getDriver().findElements(By.className("results-item"));
-//			for (WebElement element: list) {
-//				if (element.getText().contains("Paris")) {
-//					element.click();
-//					Thread.sleep(3000);
-//				}
-////                String msg = element.getText();
-////                String expectedResult = "Paris, France (PAR-All Airports)";
-////                Assert.assertEquals(msg,expectedResult);
-//
