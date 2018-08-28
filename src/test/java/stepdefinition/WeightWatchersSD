@@ -1,0 +1,43 @@
+package stepdefinition;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import framework.WeightWatchersBasePage;
+
+public class WeightWatchersTestSD {
+    private WeightWatchersBasePage weightWatchersBasePage = new WeightWatchersBasePage();
+
+    @Given("^I'm on Weigh Watchers home page$")
+    public void amIOnWWHomePage() {
+        weightWatchersBasePage.verifyTitleHomePage();
+    }
+
+    @When("^I click on Find a Meeting button$")
+    public void clickFindButton() {
+        weightWatchersBasePage.clickFindMeetingButton();
+    }
+    @When("^I enter 10011 zip code in the search field$")
+    public void enterZip() {
+        weightWatchersBasePage.enterZipCode();
+    }
+    @Then("^I see the first meeting location and distance$")
+    public void seeMeeting() {
+        weightWatchersBasePage.verifyTitleMeetingPage();
+        weightWatchersBasePage.printAddress();
+//        weightWatchersBasePage.printDistance();
+
+    }
+    @Then("^I click location name$")
+    public void printDistance() {
+        weightWatchersBasePage.clickLocationName();
+    }
+    @Then("^I verify that I've selected the same location as was on the previous page$")
+    public void verifyLocation() {
+        weightWatchersBasePage.verifyLocation();
+    }
+    @Then ("^I print out the hours of operation fot this location$")
+    public void printSchedule() {
+        weightWatchersBasePage.printHoursOfWork();
+    }
+}
