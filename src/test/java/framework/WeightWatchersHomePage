@@ -1,0 +1,108 @@
+package framework;
+
+import com.gargoylesoftware.htmlunit.javascript.host.svg.SVGFEGaussianBlurElement;
+import org.apache.xpath.operations.Bool;
+import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotSelectableException;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import stepdefinition.SharedSD;
+
+public class WeightWatchersBasePage extends BasePage {
+    // Locators
+    private By findMeetingButton = By.className("find-a-meeting");
+    private By searchBox = By.id("meetingSearch");
+    private By searchButton = By.className("input-group-btn");
+    private By locationInfo = By.className("meeting-location");
+    private By locationDistance = By.className("location_distance");
+    private By locationName = By.className("meeting-detail-top");
+    private By hoursOfWork = By.className("meeting-detail-bottom-bottom");
+
+
+    // This method verifies that the Home Page title matches with what's expected
+    public void verifyTitleHomePage() {
+        String expectedHomePageTitle = "Weight Watchers: Weight Loss Program, Recipes & Help | WW America";
+        String actualHomePageTitle = SharedSD.getDriver().getTitle();
+        Assert.assertEquals(actualHomePageTitle, expectedHomePageTitle);
+
+    }
+
+    // This method clicks on the Find A Meeting Button
+    public void clickFindMeetingButton() {
+        try {
+            if (SharedSD.getDriver().findElement(findMeetingButton).isDisplayed()) {
+                clickOn(findMeetingButton);
+            }
+        } catch (ElementNotSelectableException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    // This method verifies if "Find a Meeting" is a part of Meeting Page title
+    public void verifyTitleMeetingPage() {
+
+        String actualMeetingTitle = SharedSD.getDriver().getTitle();
+        if (actualMeetingTitle.contains("Find a Meeting")) {
+            System.out.println("Title matches");
+        }
+
+    // This method enters 10011 Zip Code and clicks on the search button
+    public void enterZipCode() {
+        try {
+            if (SharedSD.getDriver().findElement(searchBox).isDisplayed()) {
+                sendText(searchBox, "10011");
+            }
+        } catch (ElementNotSelectableException e) {
+            e.printStackTrace();
+        }
+        clickOn(searchButton);
+    }
+
+    // This method prints the Address
+    public void printAddress() {
+        WebElement element = SharedSD.getDriver().findElement(locationInfo);
+        String addressLocation = element.getText();
+        System.out.println(addressLocation);
+    }
+    // This method prints the Distance
+//    public void printDistance() {
+//        WebElement element1 = SharedSD.getDriver().findElement(locationDistance);
+//        String addressDistance = element1.getText();
+//        System.out.println(addressDistance);
+//    }
+
+    // This method clicks on the Location Name
+    public void clickLocationName() {
+        try {
+            if (SharedSD.getDriver().findElement(locationInfo).isDisplayed()) {
+                clickOn(locationInfo);
+            }
+        } catch (ElementNotSelectableException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // This method verifies location
+    public void verifyLocation() {
+        boolean confirmAddress;
+        WebElement element2 = SharedSD.getDriver().findElement(locationName);
+        String actualName = element2.getText();
+        if (actualName.contains("WEIGHT WATCHERS")) {
+            confirmAddress = true;
+        } else
+            confirmAddress = false;
+           Assert.assertTrue(confirmAddress);
+        }
+
+
+
+        // This method prints hours of work
+        public void printHoursOfWork() {
+            WebElement element3 = SharedSD.getDriver().findElement(hoursOfWork);
+            String hoursOfWork = element3.getText();
+            System.out.println(hoursOfWork);
+        }
+
+    }
+
